@@ -1,0 +1,70 @@
+/* Custom styles */
+.subject-list {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.subject-list::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+.topic-list {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping of topic items */
+  overflow-x: auto;  /* Allow horizontal scrolling */
+  white-space: nowrap;
+  margin-top: 10px;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.topic-list::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+.content-area {
+  padding: 20px;
+}
+
+/* Highlight active subject */
+.subject-list .active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Highlight active topic */
+.topic-list .active {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Mobile Dropdown Style */
+@media (max-width: 768px) {
+  .topic-list {
+    display: block;  /* Stack topics vertically on mobile */
+  }
+
+  .topic-list .topic-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .content-area {
+    width: 100%;
+  }
+}
+
+/* Desktop Horizontal Scroll */
+@media (min-width: 769px) {
+  .topic-list {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .topic-list .topic-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+}
