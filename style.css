@@ -1,0 +1,102 @@
+/* Horizontal scrollable subject section */
+.subject-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  background-color: #f8f9fa;
+  /* border-bottom: 2px solid #007bff; */
+}
+
+.subject-scroll::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+.subject-scroll button {
+  margin-right: 10px;
+  white-space: nowrap;
+  border: none;
+  background-color: transparent;
+  color: #000;
+  font-weight: normal;
+}
+/* Active subject styling */
+.subject-scroll button.active-subject {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  /* border: 2px solid #0056b3; */
+  /* border-radius: 5px; */
+}
+
+
+
+/* Sidebar topics styling */
+#desktop-topics {
+  max-width: 250px;
+  overflow-y: auto;
+  height: calc(100vh - 100px); /* Adjust height to fit within viewport */
+  width: 85%;
+  background-color: #f8f9fa;
+  /* border-right: 2px solid #007bff; */
+  padding: 10px 0; /* Add spacing */
+}
+
+#desktop-topics .list-group-item {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#desktop-topics .list-group-item:hover {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+/* Active topic highlight */
+#desktop-topics .list-group-item.active-topic {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border-right: 5px solid #0056b3;
+}
+
+
+/* Offcanvas topics (mobile menu) */
+.offcanvas-body {
+  padding: 10px;
+}
+
+.offcanvas .list-group-item {
+  padding: 10px;
+}
+
+/* Hide desktop topics on smaller screens */
+@media (max-width: 992px) {
+  #desktop-topics {
+      display: none !important;
+  }
+}
+
+/* Mobile-specific subject scroll improvements */
+@media (max-width: 576px) {
+  .subject-scroll {
+      padding: 10px 5px;
+  }
+
+  .subject-scroll button {
+      margin-right: 5px;
+      font-size: 14px;
+  }
+}
+
+
+
+#topic_content {
+  text-align: justify;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
