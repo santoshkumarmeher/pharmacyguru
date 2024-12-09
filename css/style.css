@@ -11,14 +11,17 @@
 
 /* Topics Sidebar Styling */
 #topics {
-  overflow-y: auto;
+  overflow-y: scroll;
+  height: 400px;
 }
 
 #content-area {
-  overflow-y: auto;
-  padding: 15px;
-  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+
 
 button {
   border: none;
@@ -39,3 +42,26 @@ button:hover {
 body {
   font-family: 'Poppins', sans-serif;
 }
+/* Ensure no scrollbar for the navbar */
+.navbar-nav {
+  flex-direction: row;
+  overflow-x: auto;
+}
+/* Active topic button style */
+.active-topic {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text color */
+  border: 2px solid #0056b3; /* Darker blue border */
+  font-weight: bold;
+}
+
+/* Default topic button style */
+.list-group-item {
+  cursor: pointer;
+  text-align: left;
+}
+
+/* Custom styling for topics list */
+
+
+/* Styling for the content area */

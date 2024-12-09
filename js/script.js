@@ -11,13 +11,18 @@ const subjectListDiv = document.getElementById("subject-list");
 const topicsDiv = document.getElementById("topics");
 const contentArea = document.getElementById("content-area");
 
-// Populate Subject List
+// Populate Subject List (Navbar)
 Object.keys(subjects).forEach((subject) => {
+  const li = document.createElement("li");
+  li.className = "nav-item";
+
   const button = document.createElement("button");
-  button.className = "btn btn-outline-primary mx-2";
+  button.className = "btn btn-outline-light mx-2";
   button.textContent = subject;
   button.onclick = () => loadTopics(subject);
-  subjectListDiv.appendChild(button);
+
+  li.appendChild(button);
+  subjectListDiv.appendChild(li);
 });
 
 // Load Topics for a Selected Subject
@@ -26,24 +31,24 @@ function loadTopics(subject) {
   const topicFiles = subjects[subject];
 
   topicFiles.forEach((file) => {
-    // Fetch topic files dynamically from the subject directory
-    fetch(`subjects/${subject}/${file}`)
-      .then((response) => response.text())
-      .then((html) => {
-        // Extract the topic title dynamically
-        const topicTitleMatch = html.match(/const topicTitle = "(.*?)";/);
-        const topicTitle = topicTitleMatch ? topicTitleMatch[1] : "Untitled Topic";
+      // Fetch topic files dynamically from the subject directory
+      fetch(`subjects/${subject}/${file}`)
+          .then((response) => response.text())
+          .then((html) => {
+              // Extract the topic title dynamically
+              const topicTitleMatch = html.match(/const topicTitle = "(.*?)";/);
+              const topicTitle = topicTitleMatch ? topicTitleMatch[1] : "Untitled Topic";
 
-        // Add a button for the topic in the topic list
-        const button = document.createElement("button");
-        button.className = "btn btn-link text-start w-100";
-        button.textContent = topicTitle;
-        button.onclick = () => loadContent(subject, file);
-        topicsDiv.appendChild(button);
-      })
-      .catch(() => {
-        console.error(`Error loading topic file: subjects/${subject}/${file}`);
-      });
+              // Add a button for the topic in the topic list
+              const button = document.createElement("button");
+              button.className = "list-group-item btn btn-link text-start w-100";
+              button.textContent = topicTitle;
+              button.onclick = () => loadContent(subject, file, button);
+              topicsDiv.appendChild(button);
+          })
+          .catch(() => {
+              console.error(`Error loading topic file: subjects/${subject}/${file}`);
+          });
   });
 
   // Clear the content area when a new subject is selected
@@ -51,15 +56,22 @@ function loadTopics(subject) {
 }
 
 // Load Content Dynamically
-function loadContent(subject, file) {
+function loadContent(subject, file, button) {
+  // Mark the clicked topic as active
+  const allButtons = document.querySelectorAll(".list-group-item");
+  allButtons.forEach((btn) => btn.classList.remove("active-topic")); // Remove "active" class from all buttons
+
+  button.classList.add("active-topic"); // Add "active" class to the clicked topic
+
+  // Load the content from the selected topic file
   fetch(`subjects/${subject}/${file}`)
-    .then((response) => response.text())
-    .then((html) => {
-      // Remove the script tag to prevent it from re-executing
-      const content = html.replace(/<script.*?<\/script>/gs, "");
-      contentArea.innerHTML = content;
-    })
-    .catch((error) => {
-      contentArea.innerHTML = `<p>Error loading content: ${error.message}</p>`;
-    });
+      .then((response) => response.text())
+      .then((html) => {
+          // Remove the script tag to prevent it from re-executing
+          const content = html.replace(/<script.*?<\/script>/gs, "");
+          contentArea.innerHTML = content;
+      })
+      .catch((error) => {
+          contentArea.innerHTML = `<p>Error loading content: ${error.message}</p>`;
+      });
 }
