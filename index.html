@@ -31,21 +31,11 @@
 
     <!-- Main Content Area -->
     <div class="d-flex">
-        <!-- Hamburger Button for Topic Menu (Mobile only) -->
-        <button id="topic-hamburger" class="btn btn-primary m-2 d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTopics">
-            <span>&#9776; Topics</span>
-        </button>
-
-        <!-- Topics Off-canvas Menu -->
-        <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasTopics">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title">Topics</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div id="topics" class="list-group">
-                    <!-- Topics will be added dynamically via JavaScript -->
-                </div>
+        <!-- Floating Button for Topics (Mobile only) -->
+        <div id="floating-menu" class="floating-button d-lg-none">
+            <button class="btn btn-primary" onclick="toggleHamburgerMenu()">☰</button>
+            <div id="topics" class="hamburger-menu">
+                <!-- Topics will be added dynamically via JavaScript -->
             </div>
         </div>
 

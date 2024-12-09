@@ -11,6 +11,7 @@ const subjectListDiv = document.getElementById("subject-list");
 const topicsDivMobile = document.getElementById("topics");
 const topicsDivDesktop = document.getElementById("desktop-topics");
 const contentArea = document.getElementById("content-area");
+const offcanvasTopics = document.getElementById("offcanvasTopics"); // Offcanvas menu for mobile
 
 // Populate Subject List (Navbar)
 Object.keys(subjects).forEach((subject) => {
@@ -51,7 +52,10 @@ function loadTopics(subject) {
         const buttonMobile = document.createElement("button");
         buttonMobile.className = "list-group-item list-group-item-action";
         buttonMobile.textContent = topicTitle;
-        buttonMobile.onclick = () => loadContent(subject, file, buttonMobile);
+        buttonMobile.onclick = () => {
+          loadContent(subject, file, buttonMobile);
+          closeOffcanvasMenu(); // Close the offcanvas menu after selection
+        };
         topicsDivMobile.appendChild(buttonMobile);
 
         // Desktop Topics
@@ -67,6 +71,14 @@ function loadTopics(subject) {
   });
 
   contentArea.innerHTML = "<h2>Select a topic to view content</h2>";
+}
+
+// Function to close the offcanvas menu
+function closeOffcanvasMenu() {
+  const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasTopics);
+  if (offcanvasInstance) {
+    offcanvasInstance.hide();
+  }
 }
 
 // Load Content Dynamically

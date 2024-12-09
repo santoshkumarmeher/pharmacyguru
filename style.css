@@ -4,11 +4,11 @@
   white-space: nowrap;
   scroll-behavior: smooth;
   background-color: #f8f9fa;
-  /* border-bottom: 2px solid #007bff; */
 }
 
 .subject-scroll::-webkit-scrollbar {
-  display: none; /* Hide scrollbar */
+  display: none;
+  /* Hide scrollbar */
 }
 
 .subject-scroll button {
@@ -19,26 +19,24 @@
   color: #000;
   font-weight: normal;
 }
+
 /* Active subject styling */
 .subject-scroll button.active-subject {
   background-color: #007bff;
   color: white;
   font-weight: bold;
-  /* border: 2px solid #0056b3; */
-  /* border-radius: 5px; */
 }
-
-
 
 /* Sidebar topics styling */
 #desktop-topics {
   max-width: 250px;
   overflow-y: auto;
-  height: calc(100vh - 100px); /* Adjust height to fit within viewport */
+  height: calc(100vh - 100px);
+  /* Adjust height to fit within viewport */
   width: 85%;
   background-color: #f8f9fa;
-  /* border-right: 2px solid #007bff; */
-  padding: 10px 0; /* Add spacing */
+  padding: 10px 0;
+  /* Add spacing */
 }
 
 #desktop-topics .list-group-item {
@@ -61,7 +59,6 @@
   border-right: 5px solid #0056b3;
 }
 
-
 /* Offcanvas topics (mobile menu) */
 .offcanvas-body {
   padding: 10px;
@@ -71,26 +68,68 @@
   padding: 10px;
 }
 
+/* Floating Hamburger Button */
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050;
+  /* Ensure it appears above other elements */
+}
+
+.floating-button button {
+  border-radius: 50%;
+  padding: 10px 15px;
+  font-size: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.floating-button .hamburger-menu {
+  position: absolute;
+  top: -50px;
+  /* Offset to display the menu */
+  right: 0;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  display: none;
+}
+
+.floating-button .hamburger-menu .list-group-item {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.floating-button .hamburger-menu .list-group-item:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Show menu when floating button is active */
+.floating-button.active .hamburger-menu {
+  display: block;
+}
+
 /* Hide desktop topics on smaller screens */
 @media (max-width: 992px) {
   #desktop-topics {
-      display: none !important;
+    display: none !important;
   }
 }
 
 /* Mobile-specific subject scroll improvements */
 @media (max-width: 576px) {
   .subject-scroll {
-      padding: 10px 5px;
+    padding: 10px 5px;
   }
 
   .subject-scroll button {
-      margin-right: 5px;
-      font-size: 14px;
+    margin-right: 5px;
+    font-size: 14px;
   }
 }
-
-
 
 #topic_content {
   text-align: justify;
@@ -99,4 +138,3 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
-
