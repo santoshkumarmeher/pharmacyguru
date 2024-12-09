@@ -1,4 +1,19 @@
 /* Custom styles */
+body{
+  text-align: justify;
+  font-family: 'Poppins';font-size: 18px;
+}
+
+/* Button styles */
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+button {
+  padding: 10px 20px;
+}
+
 .subject-list {
   display: flex;
   overflow-x: auto;
@@ -67,8 +82,4 @@
     padding: 10px;
     cursor: pointer;
   }
-}
-body{
-  text-align: justify;
-  font-family: 'Poppins';font-size: 22px;
 }
