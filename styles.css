@@ -68,3 +68,7 @@
     cursor: pointer;
   }
 }
+body{
+  text-align: justify;
+  font-family: 'Poppins';font-size: 22px;
+}
